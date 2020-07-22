@@ -4,11 +4,12 @@ from tqdm import tqdm
 from multiprocessing.dummy import Pool
 pool = Pool(8) # Number of concurrent threads
 
-with open("api-key.json") as f:
+with open("Cloud_Speech_API.json") as f:
     GOOGLE_CLOUD_SPEECH_CREDENTIALS = f.read()
 
 r = sr.Recognizer()
 files = sorted(os.listdir('parts/'))
+
 
 def transcribe(data):
     idx, file = data
@@ -18,7 +19,7 @@ def transcribe(data):
     with sr.AudioFile(name) as source:
         audio = r.record(source)
     # Transcribe audio file
-    text = r.recognize_google_cloud(audio, credentials_json=GOOGLE_CLOUD_SPEECH_CREDENTIALS)
+    text = r.recognize_google_cloud(audio, credentials_json=GOOGLE_CLOUD_SPEECH_CREDENTIALS,language="zh-TW")
     print(name + " done")
     return {
         "idx": idx,

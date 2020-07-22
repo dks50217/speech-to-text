@@ -2,7 +2,7 @@ import os
 import speech_recognition as sr
 from tqdm import tqdm
 
-with open("api-key.json") as f:
+with open("Cloud_Speech_API.json") as f:
     GOOGLE_CLOUD_SPEECH_CREDENTIALS = f.read()
 
 r = sr.Recognizer()
@@ -16,7 +16,7 @@ for f in tqdm(files):
     with sr.AudioFile(name) as source:
         audio = r.record(source)
     # Transcribe audio file
-    text = r.recognize_google_cloud(audio, credentials_json=GOOGLE_CLOUD_SPEECH_CREDENTIALS)
+    text = r.recognize_google_cloud(audio, credentials_json=GOOGLE_CLOUD_SPEECH_CREDENTIALS,language="zh-TW",enable_automatic_punctuation=True,enable_word_time_offsets=True)
     all_text.append(text)
 
 transcript = ""

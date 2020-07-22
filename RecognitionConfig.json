@@ -1,0 +1,24 @@
+{
+  "encoding": enum (AudioEncoding),
+  "sampleRateHertz": integer,
+  "audioChannelCount": integer,
+  "enableSeparateRecognitionPerChannel": boolean,
+  "languageCode": string,
+  "maxAlternatives": integer,
+  "profanityFilter": boolean,
+  "speechContexts": [
+    {
+      object (SpeechContext)
+    }
+  ],
+  "enableWordTimeOffsets": boolean,
+  "enableAutomaticPunctuation": boolean,
+  "diarizationConfig": {
+    object (SpeakerDiarizationConfig)
+  },
+  "metadata": {
+    object (RecognitionMetadata)
+  },
+  "model": string,
+  "useEnhanced": boolean
+}
